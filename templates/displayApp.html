@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            color: #fff;
+            background-color: rgb(53, 53, 53);
+        }
+
+        .image {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            /* border: 1px solid rgb(53, 53, 53); */
+        }
+
+        h1 {
+            margin-bottom: 0.2em;
+            /* position: relative; */
+            /* bottom:0.2em; */
+        }
+
+        img {
+            margin: 0 auto;
+            height: 15em;
+            width: 50%;
+            /* border: 1px solid #FFD700; */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-flow: row;
+
+        }
+
+        .grid-items {
+            /* border: 1px solid black; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0.6em;
+            padding: 0.5em;
+            background-color: black;
+
+        }
+
+        .gold {
+            color: #FFD700;
+        }
+
+        .red {
+            color: red;
+        }
+
+        button {
+            margin-top: 0.4em;
+            padding: 0.5em 1.7em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        {% for i in details %}
+
+        <div class="grid-items">
+            <div class="image">
+                <img src="{{i.images.0}}" alt="" srcset="">
+            </div>
+            <h1>{{i.title}}</h1><span>{{i.brand}}</span>
+            <!-- <h3>{{i.description}}</h3> -->
+            <h2>${{i.price}}</h2>
+            <p class="red">Only {{i.stock}} left..</p>
+            {%if i.rating >= 4.5 %}
+            <p><i class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                    class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                    class="fa-solid fa-star gold"></i>{{i.rating}}</p>
+            {%elif i.rating > 3.5 and i.rating < 4.5 %} <p><i class="fa-solid fa-star gold"></i><i
+                    class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                    class="fa-solid fa-star gold"></i><i class="fa-solid fa-star"></i>{{i.rating}}</p>
+                {%elif i.rating > 2.5 and i.rating < 3.5 %} <p><i class="fa-solid fa-star gold"></i><i
+                        class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>{{i.rating}}</p>
+                    {%elif i.rating > 1.5 and i.rating < 2.5 %} <p><i class="fa-solid fa-star gold"></i><i
+                            class="fa-solid fa-star gold"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>{{i.rating}}</p>
+                        {%else%}
+                        <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>No ratings yet</p>
+                        {%endif%}
+                        <button>Buy now</button>
+        </div>
+        {%endfor%}
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>

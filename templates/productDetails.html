@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{details.0.title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        *{
+            padding: 0;margin: 0;box-sizing: border-box;
+        }
+        .image{
+            width: 50%;
+        }
+        img{
+            width: 100%;
+        }
+        .gold{
+            color: #FFD700;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{details.0.title}}</h1>
+        <div class="image"><img src="{{details.0.images.0}}" alt=""></div>
+        <h3>{{details.0.description}}</h3>
+        {%if details.0.rating >= 4.5 %}
+        <p><i class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                class="fa-solid fa-star gold"></i>{{details.0.rating}}</p>
+        {%elif details.0.rating > 3.5 and details.0.rating < 4.5 %} <p><i class="fa-solid fa-star gold"></i><i
+                class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                class="fa-solid fa-star gold"></i><i class="fa-solid fa-star"></i>{{details.0.rating}}</p>
+            {%elif details.0.rating > 2.5 and details.0.rating < 3.5 %} <p><i class="fa-solid fa-star gold"></i><i
+                    class="fa-solid fa-star gold"></i><i class="fa-solid fa-star gold"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>{{details.0.rating}}</p>
+                {%elif details.0.rating > 1.5 and details.0.rating < 2.5 %} <p><i class="fa-solid fa-star gold"></i><i
+                        class="fa-solid fa-star gold"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>{{details.0.rating}}</p>
+                    {%else%}
+                    <p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>No ratings yet</p>
+                    {%endif%} <p></p>
+                    
+                    <button>Buy Now </button>
+    </div>
+    
+</body>
+</html>
